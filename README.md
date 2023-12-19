@@ -1,8 +1,8 @@
-# AutoTask
+# TaskTorch
 
 ## Introduction
 
-Welcome to AutoTask, a full-stack application built using the PERN stack (PostgreSQL, Express, React, Node.js). This project aims to demonstrate a robust architecture for web application development, leveraging the strengths of each technology in the stack.
+Welcome to TaskTorch, a full-stack application built using the PERN stack (PostgreSQL, Express, React, Node.js). This project aims to demonstrate a robust architecture for web application development, leveraging the strengths of each technology in the stack.
 
 ### Prerequisites
 
