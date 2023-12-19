@@ -19,7 +19,7 @@ A step-by-step series of examples that tell you how to get a development environ
 
 1. Clone the repo
    ```sh
-   git clone git@github.com:HassanA01/task-manager-app.git
+   git clone git@github.com:HassanA01/task-torch.git
    ```
 2. Install NPM packages
    ```sh
