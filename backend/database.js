@@ -1,5 +1,6 @@
 const pg = require('pg');
 
+console.log(typeof process.env.DB_PASSWORD)
 const db = new pg.Client({
     user: process.env.DB_USER || 'postgres',
     host: process.env.DB_HOST || 'localhost',
@@ -10,4 +11,4 @@ const db = new pg.Client({
 
 db.connect();
 
-module.exports = db;
+module.exports = { db };
