@@ -29,4 +29,28 @@ router.post('/:project_id', async (req, res) => {
     }
 });
 
+router.patch(':project_id/:task_id', async (req, res) => {
+    const {project_id, task_id} = req.params;
+    const {taskName, taskDesc} = req.body;
+
+    try {
+        const result = await tasksController.updateTask(project_id, task_id, taskName, taskDesc);
+        res.status(200).json(result);
+    } catch {
+        res.status(500).json({message: err.message});
+    }
+});
+
+router.delete(':project_id/:task_id', async (req, res) => {
+
+    const {project_id, task_id} = req.params;
+
+    try {
+        const result = await tasksController.deleteTask(project_id, task_id);
+        res.status(200).json(result);
+    } catch ( error ) {
+        res.status(500).json({message: err.message});
+    }
+});
+
 module.exports = router;

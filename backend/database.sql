@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS task_torch
+CREATE DATABASE task_torch
 
 -- Enter top line first and then following lines --
 
