@@ -3,10 +3,12 @@ const { db } = require('../database');
 // Get all projects
 const getAllProjects = async () => {
     try {
-        const projects = await db.query('SELECT * FROM projects');
-        return projects.rows;
+        const result = await db.query('SELECT * FROM projects');
+        const projects = result.rows;
+        return projects;
     } catch (err) {
-        console.error(err);
+        console.error('Error executing query:', err);
+        throw err;
     }
 };
 
@@ -35,4 +37,26 @@ const deleteProject = async (projectId) => {
     }
 };
 
-module.exports = { getAllProjects, createProject, deleteProject };
+const updateProject = async (projectId, projectName, projectDescription, projectStatus) => {
+    try {
+        const query = `
+            UPDATE projects
+            SET name = $1, description = $2, status = $3
+            WHERE id = $4
+            RETURNING *;`;
+
+        const result = await db.query(query, [projectName, projectDescription, projectStatus, projectId]);
+
+        if (result.rows.length === 0) {
+            throw new Error('Project not found');
+        }
+
+        return result.rows[0]; // Return the updated project details
+
+    } catch (error) {
+        console.error('Error updating project:', error);
+        throw error;
+    }
+};
+
+module.exports = { getAllProjects, createProject, deleteProject, updateProject };
